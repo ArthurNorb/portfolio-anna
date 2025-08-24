@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap');
+
+@font-face {
+  font-family: 'Maragsa'; 
+  src: url('/resources/fonts/Maragsa-Display.woff2') format('woff2'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =================================== */
+/* KEYFRAMES                           */
+/* =================================== */
+
+@keyframes draw-line {
+    from { stroke-dashoffset: var(--stroke-start); }
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes subtle-pulse {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.25; }
+}
+
+@keyframes move-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fade-out-up {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* =================================== */
+/* ESTILOS DOS ELEMENTOS               */
+/* =================================== */
+
+/* --- Fundo SVG Abstrato --- */
+
+/* Estilos gerais para o container do SVG */
+.fundo-abstrato {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+    opacity: 0.15;
+}
+
+/* Apenas os estilos visuais comuns */
+.fundo-abstrato svg path {
+    fill: none;
+    stroke: white;
+}
+
+/* Estilos individuais para cada linha com a variável CSS */
+
+/* --- Linha 1 --- */
+.fundo-abstrato svg path:nth-child(1) {
+    --stroke-start: 2165; /* Define a variável para esta linha */
+    stroke-dasharray: var(--stroke-start);
+    stroke-dashoffset: var(--stroke-start);
+    animation: draw-line 4s ease-out 0s forwards;
+}
+
+/* --- Linha 2 --- */
+.fundo-abstrato svg path:nth-child(2) {
+    --stroke-start: 2237; /* Define a variável para esta linha */
+    stroke-dasharray: var(--stroke-start);
+    stroke-dashoffset: var(--stroke-start);
+    animation: draw-line 4s ease-out 0.5s forwards;
+}
+
+/* --- Linha 3 --- */
+.fundo-abstrato svg path:nth-child(3) {
+    --stroke-start: 2110; /* Define a variável para esta linha */
+    stroke-dasharray: var(--stroke-start);
+    stroke-dashoffset: var(--stroke-start);
+    animation: draw-line 4s ease-out 1s forwards;
+}
+
+
+/* --- Fundo de Gradiente --- */
+
+.fundo-gradiente {
+    position: relative;
+}
+
+.fundo-gradiente::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-size: 400% 400%;
+    animation: move-gradient 20s infinite ease-in-out;
+    background-image:
+        radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.1), transparent 30%),
+        radial-gradient(circle at 85% 75%, rgba(255, 255, 255, 0.12), transparent 40%);
+}
+
+/* --- Interatividade e Conteúdo --- */
+
+#fundo-interativo {
+    transition: transform 0.2s ease-out;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+.page-fade-out {
+    /* Aplica a animação e garante que o elemento permaneça invisível no final */
+    animation: fade-out-up 0.5s ease-in forwards;
+}
