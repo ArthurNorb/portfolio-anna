@@ -45,14 +45,14 @@
     </main>
 
     <footer class="absolute bottom-0 left-0 w-full p-4 md:p-8 font-montserrat z-10">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-sm text-white/60">
-                Desenvolvido por <a href="https://www.linkedin.com/in/arthur-norberto/" class="hover:text-tema-200" target="_blank">Arthur Norberto</a>
-            </p>
-            <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm text-white/60">
-                <a href="mailto:annabeatrizcomunica@gmail.com" class="hover:text-tema-200 transition-colors">annabeatrizcomunica@gmail.com</a>
-                <a href="tel:+5531999999999" class="hover:text-tema-200 transition-colors">+55 37 99820-2164</a>
-                <div class="flex items-center gap-4">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4 ">
+            <a href="https://www.linkedin.com/in/arthur-norberto" target="_blank">
+                <img src="/img/lito.png" class="h-10 opacity-50 hover:opacity-100 transition-opacity" alt="Lito">
+            </a>
+            <div class="flex flex-wrap justify-center items-center gap-x-2 text-sm text-white/60">
+                <a href="mailto:annabeatrizcomunica@gmail.com" class="hover:text-tema-200 transition-colors text-xs">annabeatrizcomunica@gmail.com</a>
+                <a href="tel:+5531999999999" class="hover:text-tema-200 transition-colors text-xs">+55 37 99820-2164</a>
+                <div class="flex items-center">
                     <a href="https://www.linkedin.com/in/anna-millard-0aa0261a4/" target="_blank" class="hover:text-tema-200 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" aria-hidden="true"
                             viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->

@@ -4,12 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio Anna Millard</title>
-    <
+    <title>@yield('title', 'Portfólio Anna Millard')</title>
+
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-tema-100 text-center antialiased fundo-gradiente">
+<body class="bg-tema-100 text-center antialiased fundo-gradiente min-h-screen">
+
     <div id="fundo-interativo" class="fundo-abstrato">
         <svg width="100%" height="100%" viewBox="0 0 1440 1024" preserveAspectRatio="xMidYMid slice"
             xmlns="http://www.w3.org/2000/svg">
@@ -19,10 +23,43 @@
         </svg>
     </div>
 
-    <header class="absolute top-0 left-0 w-full p-4 md:p-8 z-10">
-        <div class="flex justify-end">
+    <header class="absolute top-0 left-0 w-full p-4 md:p-8 z-20">
+        <div class="container mx-auto flex justify-between items-center">
+
+            <div class="relative" id="menu-container">
+                {{-- O botão que exibe o título da página atual --}}
+                <button id="menu-button"
+                    class="flex items-center gap-2 bg-tema-200 text-white font-montserrat uppercase tracking-widest text-sm px-4 py-2 rounded-md hover:bg-opacity-90 transition-colors">
+
+                    {{-- AQUI ESTÁ A MÁGICA: Ele vai exibir o que for definido em @section('page-title') --}}
+                    <span>@yield('page-title', 'Menu')</span>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                        stroke="currentColor" class="size-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </button>
+
+                {{-- O painel que abre com os outros links --}}
+                <div id="menu-dropdown"
+                    class="absolute left-0 mt-2 w-56 origin-top-left rounded-md bg-tema-300 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition-all duration-300 ease-in-out opacity-0 scale-95 -translate-y-2 pointer-events-none">
+                    <div class="py-1 text-left">
+                        <a href="{{ route('home') }}"
+                            class="font-montserrat text-white/80 block px-4 py-2 text-sm hover:bg-tema-200 hover:text-white">Home</a>
+                        <a href="{{ route('experiencias.index') }}"
+                            class="font-montserrat text-white/80 block px-4 py-2 text-sm hover:bg-tema-200 hover:text-white">Experiências</a>
+                        <a href="#"
+                            class="font-montserrat text-white/80 block px-4 py-2 text-sm hover:bg-tema-200 hover:text-white">Textos</a>
+                        <a href="#"
+                            class="font-montserrat text-white/80 block px-4 py-2 text-sm hover:bg-tema-200 hover:text-white">Fotos</a>
+                        <a href="#"
+                            class="font-montserrat text-white/80 block px-4 py-2 text-sm hover:bg-tema-200 hover:text-white">Contato</a>
+                    </div>
+                </div>
+            </div>
+
             <div
-                class="group flex items-center gap-2 border-b border-white/50 w-full max-w-xs transition-all duration-300 focus-within:border-tema-200 focus-within:w-full">
+                class="group flex items-center gap-2 border-b border-white/50 w-full max-w-[15rem] transition-all duration-300 focus-within:border-tema-200 focus-within:max-w-xs">
                 <input type="search" placeholder="Buscar..."
                     class="w-full bg-transparent text-white placeholder-white/70 border-none focus:ring-0 font-montserrat">
                 <button class="text-tema-300 transition-colors duration-300 group-hover:text-tema-200">
@@ -36,46 +73,30 @@
         </div>
     </header>
 
-    <main class="flex flex-col items-center justify-center min-h-screen px-4 gap-4 md:gap-6 cursor-default">
-        <p
-            class="font-montserrat font-thin uppercase text-white tracking-widest text-lg md:text-2xl animate-fade-in-down">
-            Portfólio
-        </p>
-        <h1 class="font-maragsa text-tema-200 text-7xl md:text-9xl animate-fade-in">
-            Anna Millard
-        </h1>
-        <h2
-            class="font-montserrat font-thin uppercase text-white tracking-wider text-4xl md:text-5xl animate-fade-in-up">
-            Jornalista
-        </h2>
-
-        <a href="{{ route('home')}}" id="home"
-            class="group mt-8 flex items-center gap-4 font-montserrat font-thin text-2xl text-tema-200 uppercase tracking-widest no-underline transition-all duration-300 ease-in-out hover:text-tema-300 hover:gap-6">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                stroke="currentColor"
-                class="h-8 transition-transform duration-300 ease-in-out group-hover:translate-x-2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-            </svg>
-        </a>
+    <main>
+        @yield('content')
     </main>
 
     <footer class="absolute bottom-0 left-0 w-full p-4 md:p-8 font-montserrat z-10">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4 ">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <a href="https://www.linkedin.com/in/arthur-norberto" target="_blank">
                 <img src="/img/lito.png" class="h-10 opacity-50 hover:opacity-100 transition-opacity" alt="Lito">
             </a>
             <div class="flex flex-wrap justify-center items-center gap-x-2 text-sm text-white/60">
-                <a href="mailto:annabeatrizcomunica@gmail.com" class="hover:text-tema-200 transition-colors text-xs">annabeatrizcomunica@gmail.com</a>
-                <a href="tel:+5531999999999" class="hover:text-tema-200 transition-colors text-xs">+55 37 99820-2164</a>
+                <a href="mailto:annabeatrizcomunica@gmail.com"
+                    class="hover:text-white transition-colors text-xs">annabeatrizcomunica@gmail.com</a>
+                <a href="tel:+5531999999999" class="hover:text-white transition-colors text-xs">+55 37 99820-2164</a>
                 <div class="flex items-center">
-                    <a href="https://www.linkedin.com/in/anna-millard-0aa0261a4/" target="_blank" class="hover:text-tema-200 transition-colors">
+                    <a href="https://www.linkedin.com/in/anna-millard-0aa0261a4/" target="_blank"
+                        class="hover:text-white transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" aria-hidden="true"
                             viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                             <path
                                 d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96zM165 266.2L231.5 266.2L231.5 480L165 480L165 266.2zM236.7 198.5C236.7 219.8 219.5 237 198.2 237C176.9 237 159.7 219.8 159.7 198.5C159.7 177.2 176.9 160 198.2 160C219.5 160 236.7 177.2 236.7 198.5zM413.9 480L413.9 376C413.9 351.2 413.4 319.3 379.4 319.3C344.8 319.3 339.5 346.3 339.5 374.2L339.5 480L273.1 480L273.1 266.2L336.8 266.2L336.8 295.4L337.7 295.4C346.6 278.6 368.3 260.9 400.6 260.9C467.8 260.9 480.3 305.2 480.3 362.8L480.3 480L413.9 480z" />
                         </svg>
                     </a>
-                    <a href="https://www.instagram.com/annamllrd/" target="_blank" class="hover:text-tema-200 transition-colors">
+                    <a href="https://www.instagram.com/annamllrd/" target="_blank"
+                        class="hover:text-white transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" aria-hidden="true"
                             viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                             <path
@@ -86,33 +107,26 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const menuContainer = document.getElementById('menu-container');
+        const menuButton = document.getElementById('menu-button');
+        const menuDropdown = document.getElementById('menu-dropdown');
+
+        if (menuButton) {
+            menuButton.addEventListener('click', () => {
+                menuDropdown.classList.toggle('menu-open');
+            });
+
+            window.addEventListener('click', (event) => {
+                if (!menuContainer.contains(event.target)) {
+                    menuDropdown.classList.remove('menu-open');
+                }
+            });
+        }
+    </script>
+    @stack('scripts')
+
 </body>
 
 </html>
-
-<script>
-    document.addEventListener('mousemove', function(e) {
-        const bg = document.getElementById('fundo-interativo');
-        if (bg) {
-            const speed = -0.01;
-            const x = (window.innerWidth / 2 - e.clientX) * speed;
-            const y = (window.innerHeight / 2 - e.clientY) * speed;
-            bg.style.transform = `translateX(${x}px) translateY(${y}px)`;
-        }
-    });
-
-    const pageLink = document.getElementById('home');
-    const mainContent = document.querySelector('main');
-
-    pageLink.addEventListener('click', function(event) {
-        event.preventDefault();
-
-        const destination = this.href;
-
-        mainContent.classList.add('page-fade-out');
-
-        setTimeout(() => {
-            window.location.href = destination;
-        }, 500);
-    });
-</script>
