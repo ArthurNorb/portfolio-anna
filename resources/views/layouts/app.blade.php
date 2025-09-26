@@ -50,7 +50,7 @@
                             class="font-montserrat text-white/80 block px-4 py-2 text-sm hover:bg-tema-200 hover:text-white">Experiências</a>
                         <a href="#"
                             class="font-montserrat text-white/80 block px-4 py-2 text-sm hover:bg-tema-200 hover:text-white">Textos</a>
-                        <a href="#"
+                        <a href="{{ route('fotos.index') }}"
                             class="font-montserrat text-white/80 block px-4 py-2 text-sm hover:bg-tema-200 hover:text-white">Fotos</a>
                         <a href="{{ route('contact.index') }}"
                             class="font-montserrat text-white/80 block px-4 py-2 text-sm hover:bg-tema-200 hover:text-white">Contato</a>
@@ -145,7 +145,7 @@
         });
     </script>
     @stack('scripts')
-
+    <script src="https://cdn.jsdelivr.net/npm/spotlight.js@0.7.8/dist/spotlight.bundle.min.js" defer></script>
 </body>
 
 </html>

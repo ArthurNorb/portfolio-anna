@@ -35,7 +35,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="font-montserrat uppercase tracking-widest text-tema-100 font-bold transition-all duration-300 hover:text-white hover:tracking-wider">
+            <a href="{{ route('fotos.index') }}" class="font-montserrat uppercase tracking-widest text-tema-100 font-bold transition-all duration-300 hover:text-white hover:tracking-wider">
                 Fotos
             </a>
         </li>

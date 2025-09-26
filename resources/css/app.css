@@ -135,3 +135,25 @@ main {
     transform: scale(1) translateY(0);
     pointer-events: auto;
 }
+
+.masonry-grid {
+    column-count: 1;
+    column-gap: 1rem; /* O espaçamento entre as fotos */
+}
+
+/* Define o número de colunas para cada tamanho de tela */
+@media (min-width: 640px) { /* sm */
+    .masonry-grid { column-count: 2; }
+}
+@media (min-width: 768px) { /* md */
+    .masonry-grid { column-count: 3; }
+}
+@media (min-width: 1024px) { /* lg */
+    .masonry-grid { column-count: 4; }
+}
+
+/* Evita que uma imagem se quebre entre duas colunas */
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+}
