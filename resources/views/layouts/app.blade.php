@@ -52,7 +52,7 @@
                             class="font-montserrat text-white/80 block px-4 py-2 text-sm hover:bg-tema-200 hover:text-white">Textos</a>
                         <a href="#"
                             class="font-montserrat text-white/80 block px-4 py-2 text-sm hover:bg-tema-200 hover:text-white">Fotos</a>
-                        <a href="#"
+                        <a href="{{ route('contact.index') }}"
                             class="font-montserrat text-white/80 block px-4 py-2 text-sm hover:bg-tema-200 hover:text-white">Contato</a>
                     </div>
                 </div>
@@ -127,23 +127,23 @@
     </script>
 
     <script>
-    const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'l', 'o', 'g', 'i', 'n'];
-    
-    const adminUrl = '{{ route("filament.admin.auth.login") }}';
+        const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'l', 'o', 'g', 'i', 'n'];
 
-    let keySequence = [];
+        const adminUrl = '{{ route('filament.admin.auth.login') }}';
 
-    document.addEventListener('keyup', (e) => {
-        keySequence.push(e.key);
+        let keySequence = [];
 
-        keySequence.splice(-secretCode.length - 1, keySequence.length - secretCode.length);
-        
-        if (keySequence.join('').toLowerCase() === secretCode.join('').toLowerCase()) {
-            console.log('Código secreto ativado! Redirecionando...');
-            window.location.href = adminUrl;
-        }
-    });
-</script>
+        document.addEventListener('keyup', (e) => {
+            keySequence.push(e.key);
+
+            keySequence.splice(-secretCode.length - 1, keySequence.length - secretCode.length);
+
+            if (keySequence.join('').toLowerCase() === secretCode.join('').toLowerCase()) {
+                console.log('Código secreto ativado! Redirecionando...');
+                window.location.href = adminUrl;
+            }
+        });
+    </script>
     @stack('scripts')
 
 </body>
