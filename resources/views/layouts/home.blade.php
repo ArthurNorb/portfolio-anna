@@ -73,6 +73,23 @@
     </footer>
 
     <script>
+        const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'l', 'o', 'g', 'i', 'n'];
+
+        const adminUrl = '{{ route('filament.admin.auth.login') }}';
+
+        let keySequence = [];
+
+        document.addEventListener('keyup', (e) => {
+            keySequence.push(e.key);
+
+            keySequence.splice(-secretCode.length - 1, keySequence.length - secretCode.length);
+
+            if (keySequence.join('').toLowerCase() === secretCode.join('').toLowerCase()) {
+                console.log('Código secreto ativado! Redirecionando...');
+                window.open(adminUrl, '_blank');
+            }
+        });
+    </script>
     @stack('scripts')
 
 </body>
