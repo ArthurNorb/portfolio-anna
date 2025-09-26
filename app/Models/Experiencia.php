@@ -17,4 +17,9 @@ class Experiencia extends Model
         'data_saida',
         'imagem',
     ];
+
+     protected $casts = [
+        'data_entrada' => 'date',
+        'data_saida' => 'date',
+    ];
 }
