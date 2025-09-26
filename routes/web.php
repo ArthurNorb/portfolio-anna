@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ExperienciaController;
-use App\Http\Controllers\FotoController; 
+use App\Http\Controllers\FotoController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
-Route::view('/home', 'home')->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::view('dashboard', 'dashboard')

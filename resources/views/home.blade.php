@@ -47,14 +47,32 @@
     </ul>
 </nav>
 
-{{-- Bloco 3: Área para Conteúdo Futuro --}}
-<div class="w-full px-4 md:px-8 py-16 bg-black/20 ">
-    <div class="container mx-auto">
-        <h2 class="font-maragsa text-tema-200 text-5xl mb-8 text-center">Meus Trabalhos</h2>
-        
-        <div class="min-h-[50vh] border-2 border-dashed border-gray-500 rounded-lg flex items-center justify-center">
-            <p class="text-gray-500 font-montserrat">Futuro conteúdo (fotos, textos, etc.) entrará aqui.</p>
-        </div>
+{{-- Bloco 3: Carrossel de Fotos Infinito --}}
+<div class="w-full py-16 animate-fade-in" style="animation-delay: 1s;">
+    <div class="container mx-auto text-center">
+        <h2 class="font-maragsa text-tema-200 text-5xl mb-8">Últimos Trabalhos</h2>
+    </div>
+
+    {{-- A MÁGICA COMEÇA AQUI --}}
+    {{-- Container principal que esconde o excesso --}}
+    <div class="scroller" data-speed="slow">
+        {{-- Lista de fotos que vai animar --}}
+        <ul class="scroller__inner">
+            {{-- Loop para exibir cada foto --}}
+            @foreach ($fotos as $foto)
+                <li>
+                    <img src="{{ Illuminate\Support\Facades\Storage::url($foto->imagem) }}" 
+                         alt="{{ $foto->titulo ?? 'Foto de Anna Millard' }}">
+                </li>
+            @endforeach
+            {{-- DUPLICAMOS A LISTA para o efeito de loop infinito --}}
+            @foreach ($fotos as $foto)
+                <li aria-hidden="true">
+                    <img src="{{ Illuminate\Support\Facades\Storage::url($foto->imagem) }}" 
+                         alt="{{ $foto->titulo ?? 'Foto de Anna Millard' }}">
+                </li>
+            @endforeach
+        </ul>
     </div>
 </div>
 
