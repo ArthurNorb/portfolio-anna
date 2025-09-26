@@ -12,7 +12,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-tema-100 text-center antialiased fundo-gradiente min-h-screen">
+<body class="bg-tema-100 text-center antialiased fundo-gradiente min-h-screen flex flex-col">
 
     <div id="fundo-interativo" class="fundo-abstrato">
         <svg width="100%" height="100%" viewBox="0 0 1440 1024" preserveAspectRatio="xMidYMid slice"
@@ -40,11 +40,11 @@
         </div>
     </header>
 
-    <main>
+    <main class="flex-grow">
         @yield('content')
     </main>
 
-    <footer class="absolute bottom-0 left-0 w-full p-4 md:p-8 font-montserrat z-10">
+    <footer class="left-0 w-full p-4 md:p-8 font-montserrat z-10 mt-5">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4 ">
             <a href="https://www.linkedin.com/in/arthur-norberto" target="_blank">
                 <img src="/img/lito.png" class="h-10 opacity-50 hover:opacity-100 transition-opacity" alt="Lito">
